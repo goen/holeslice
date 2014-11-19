@@ -62,14 +62,7 @@ func Delete1(h [2][2][]T, n, l int) [2][2][]T {
 }
 
 func At1(h [2][2][]T, off int) T {
-	l0 := Len0(h[0])
-	p := posi(off - l0)
-
-	if off < l0 {
-		return At0(h[0], off)
-	} else {
-		return At0(h[1], off-l0)
-	}
-	
-	return At0(h[itoi(p)], off+p)
+	d := [2]int{off, off - Len0(h[0])}
+	p := posi(d[1])
+	return At0(h[p], d[p])
 }
