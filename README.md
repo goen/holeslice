@@ -20,20 +20,24 @@ The additional features provided by the HOS are insert / delete to any location.
 HOS are suitable to anywhere a programmer would need a linear ordered set, e.g.
 to use a generic data structure, such as a balancing tree/trie or a list? rope?.
 
-The best performance would be for an occasional inserts/deletes clustered around
-a few specific spots.
+The best performance would be with an occasional inserts/deletes on a few
+specific spots.
 
-The random access /read,write/ would be fast, just like in a regular array.
+The random access would be fast, just like in a regular array.
 
 Use cases:
  * like a gap buffer
  * manipulating abstract syntax trees
  * a row in a text editor (cursor == the hole)
+ * sprintf, templates, search & replace
  * fifo, lifo, deque, ring buffer
 
 Misuse cases
- * Priority Queue /heap/ (due to very frequent random insertion)
+ * as a Priority Queue /heap/ (due to very frequent random insertion)
 
 Performance specific additional operations
- * high degree HOS may need to be rebalanced
+ * unbalanced HOS may be needed to be moved to an alternative backend
  * small or fragmented subslices or unused holes may need to be merged
+
+Alternative banckends
+ * rope, balancing trees
