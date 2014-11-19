@@ -7,7 +7,7 @@ func Append0(h [2][]T, s ...T) [2][]T {
 }
 
 func Push0(h [2][]T, s []T) [2][]T {
-	i := itob(len(h[1]))
+	i := itoi(len(h[1]))
 	h[i] = append(h[i], s...)
 	return h
 }

@@ -5,7 +5,7 @@ func Append1(h [2][2][]T, s ...T) [2][2][]T {
 }
 
 func Push1(h [2][2][]T, s []T) [2][2][]T {
-	i := itob(Len0(h[1]))
+	i := itoi(Len0(h[1]))
 	h[i] = Push0(h[i], s)
 	return h
 }
@@ -63,10 +63,13 @@ func Delete1(h [2][2][]T, n, l int) [2][2][]T {
 
 func At1(h [2][2][]T, off int) T {
 	l0 := Len0(h[0])
+	p := posi(off - l0)
+
 	if off < l0 {
 		return At0(h[0], off)
 	} else {
 		return At0(h[1], off-l0)
 	}
-	return T(0)
+	
+	return At0(h[itoi(p)], off+p)
 }
