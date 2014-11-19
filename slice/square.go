@@ -23,43 +23,19 @@ func Len1(h [2][2][]T) int {
 }
 
 func Delete1(h [2][2][]T, n, l int) [2][2][]T {
-	l1 := Len0(h[1])
 	l0 := Len0(h[0])
-	// TODO: simplify to three cases: left ,cross, right
-
-	if l1 == 0 && n > 0 {
-		h[1] = Left0(h[0], n+l)
-		h[0] = Right0(h[0], n)
-		return h
-	}
-
-	if n == 0 {
-		if l >= l0 {
-			h[0] = Left0(h[1], l-l0)
-			h[1] = [2][]T{}
-		} else {
-			h[0] = Left0(h[0], l)
-		}
-	} else if n < l0 {
-		if n+l == l0 {
-			h[0] = Right0(h[0], n)
-			return h
-		} else if n+l > l0 {
-			h[0] = Right0(h[0], n)
-			h[1] = Left0(h[1], n+l-l0)
-			return h
-		}
-		h[0] = Delete0(h[0], n, l)
-	} else if n == l0 {
-		h[1] = Left0(h[1], l)
-		return h
-	} else if n+l == l0+l1 {
-		h[1] = Right0(h[1], n-l0)
-		return h
-	} else {
+	if n >= l0 {
 		h[1] = Delete0(h[1], n-l0, l)
+		return h
+	} else if n + l == l0 {
+		h[0] = Right0(h[0], n)
 	}
+	if n + l >= l0 {
+		h[1] = Left0(h[1], n+l-l0)
 
+	} else {
+		h[0] = Delete0(h[0], n, l)
+	}
 	return h
 }
 
