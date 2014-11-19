@@ -25,6 +25,8 @@ func Len1(h [2][2][]T) int {
 func Delete1(h [2][2][]T, n, l int) [2][2][]T {
 	l1 := Len0(h[1])
 	l0 := Len0(h[0])
+	// TODO: simplify to three cases: left ,cross, right
+
 	if l1 == 0 && n > 0 {
 		h[1] = Left0(h[0], n+l)
 		h[0] = Right0(h[0], n)
@@ -63,6 +65,5 @@ func Delete1(h [2][2][]T, n, l int) [2][2][]T {
 
 func At1(h [2][2][]T, off int) T {
 	d := [2]int{off, off - Len0(h[0])}
-	p := posi(d[1])
-	return At0(h[p], d[p])
+	return At0(h[posi(d[1])], d[posi(d[1])])
 }
