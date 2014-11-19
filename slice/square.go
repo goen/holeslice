@@ -5,12 +5,8 @@ func Append1(h [2][2][]T, s ...T) [2][2][]T {
 }
 
 func Push1(h [2][2][]T, s []T) [2][2][]T {
-	if Len0(h[1]) == 0 {
-		h[0] = Push0(h[0], s)
-	} else {
-		h[1] = Push0(h[1], s)
-	}
-
+	i := itob(Len0(h[1]))
+	h[i] = Push0(h[i], s)
 	return h
 }
 
